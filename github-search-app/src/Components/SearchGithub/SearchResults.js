@@ -20,7 +20,7 @@ const SearchResults = ({ users, searchTerm }) => {
   }
 
   return (
-    <div className="mt-6 flex flex-wrap gap-6 justify-center">
+    <div className="mt-6 flex flex-wrap justify-center gap-6 px-4">
       {users.map((item) =>
         item.login ? (
           <UserCard key={item.id} user={item} />
