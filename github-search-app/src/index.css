@@ -9,6 +9,11 @@ body {
   animation: gradient 15s ease infinite;
   @apply text-gray-800 min-h-screen overflow-auto relative;
 }
+/* In your global CSS or Tailwind body styles */
+body,
+html {
+  overflow-x: hidden; /* Prevent page horizontal scroll */
+}
 
 /* Floating animated blobs */
 .blob {
