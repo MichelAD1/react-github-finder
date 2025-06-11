@@ -1,7 +1,12 @@
 import React from "react";
+import SearchInput from "../Components/SearchInput";
 
-const Home = () => {
-  return <div>hello world</div>;
+const SearchGithub = () => {
+  return (
+    <div className="min-h-screen dark">
+      <SearchInput />
+    </div>
+  );
 };
 
-export default Home;
+export default SearchGithub;
