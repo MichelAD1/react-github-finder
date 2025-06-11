@@ -5,6 +5,7 @@ import Pagination from "../Components/Pagination";
 import useSearchStore from "../Stores/SearchStores";
 import Spinner from "../Components/Spinner";
 import { GetGithubUsers } from "../api/GetGithubUsers";
+import { GetGithubRepos } from "../api/GetGithubRepos";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -17,12 +18,20 @@ const SearchGithub = () => {
     setCurrentPage(1);
   }, [searchTerm, searchType]);
 
-  const { data, isLoading } = GetGithubUsers(
-    searchTerm,
-    searchType === "users",
-    currentPage,
-    ITEMS_PER_PAGE
-  );
+  const { data, isLoading, isError, error } =
+    searchType === "users"
+      ? GetGithubUsers(
+          searchTerm,
+          !!searchTerm && searchType === "users",
+          currentPage,
+          ITEMS_PER_PAGE
+        )
+      : GetGithubRepos(
+          searchTerm,
+          !!searchTerm && searchType === "repositories",
+          currentPage,
+          ITEMS_PER_PAGE
+        );
 
   const totalResults = data?.total_count || 0;
   const totalPages = Math.min(Math.ceil(totalResults / ITEMS_PER_PAGE), 100);
@@ -32,6 +41,8 @@ const SearchGithub = () => {
       <SearchInput />
       {isLoading ? (
         <Spinner />
+      ) : isError ? (
+        <div className="text-red-500 text-center mt-10">{error.message}</div>
       ) : (
         <>
           <SearchResults users={data?.items || []} />
