@@ -38,6 +38,9 @@ const SearchGithub = () => {
 
   return (
     <div className="min-h-screen dark px-4 pb-20">
+      <div className="blob"></div>
+      <div className="blob"></div>
+      <div className="blob"></div>
       <SearchInput />
       {isLoading ? (
         <Spinner />
@@ -45,7 +48,7 @@ const SearchGithub = () => {
         <div className="text-red-500 text-center mt-10">{error.message}</div>
       ) : (
         <>
-          <SearchResults users={data?.items || []} />
+          <SearchResults users={data?.items || []} searchTerm={searchTerm} />
           {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}
