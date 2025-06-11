@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaSearch, FaUser, FaBook } from "react-icons/fa";
-import useSearchStore from "../Stores/SearchStores";
-import githubLogo from "../assets/github-text.png";
+import useSearchStore from "../../Stores/SearchStores";
+import githubLogo from "../../assets/github-text.png";
+// import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
   const [inputValue, setInputValue] = useState("");
@@ -13,6 +14,7 @@ const SearchInput = () => {
     setSearchTerm(inputValue);
     setSearchType(type);
   };
+  //   const navigate = useNavigate();
 
   return (
     <div className="w-full flex flex-col items-center px-4 pt-10 pb-6">
@@ -54,6 +56,12 @@ const SearchInput = () => {
                 Find Repos
               </div>
             </button>
+            {/* <button
+              onClick={() => navigate("/page")}
+              className="mt-6 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition duration-500 bg-gradient-to-r from-green-600 to-green-800 hover:from-green-500 hover:to-green-700 transform hover:scale-105"
+            >
+              Go to /page
+            </button> */}
           </div>
         </div>
       </div>
